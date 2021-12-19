@@ -1,0 +1,19 @@
+{
+  "name": "react-native-date-time-merge-input",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishna4157/react-native-date-time-merge-input.git"
+  },
+  "author": "krishna4157",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krishna4157/react-native-date-time-merge-input/issues"
+  },
+  "homepage": "https://github.com/krishna4157/react-native-date-time-merge-input#readme"
+}
