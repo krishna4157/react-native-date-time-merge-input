@@ -7,6 +7,7 @@ export default function DTMergeInput(props) {
     const [minutes, setInMinutes] = React.useState(false);
     var mode = props.mode;
     var style = props.style;
+    var value = props.value;
     const updateFields = value => {
         setText(value);
         setLength(value.length);
