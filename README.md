@@ -54,7 +54,9 @@ DTMergeInput;
 required Props and its datatypes :
 
 1.  style  : any text styles
-
+2.  mode   : "date", "date-time"
+3.  value  : value of input
+4.  getValue : funtion()
 
 
 # Credit goes to : 

@@ -5,7 +5,8 @@ export default function DTMergeInput(props) {
     const [text, setText] = React.useState('');
     const [length, setLength] = React.useState('');
     const [minutes, setInMinutes] = React.useState(false);
-
+    var mode = props.mode;
+    var style = props.style;
     const updateFields = value => {
         setText(value);
         setLength(value.length);
@@ -58,7 +59,11 @@ export default function DTMergeInput(props) {
                 }
                 break;
             case 10:
-                st = e + " ";
+                if (mode == "date") {
+                    st = e;
+                } else {
+                    st = e + " ";
+                }
                 updateFields(st);
                 break;
             case 11:
@@ -98,29 +103,30 @@ export default function DTMergeInput(props) {
                 break;
         }
     }
-    console.log("props");
-    console.log(props);
+
     return (
-        <TextInput
-            maxLength={16}
-            placeholder={'DD/MM/YYYY HH:mm'}
-            value={text}
-            onChangeText={(e) => {
-                e = e.replace(/[A-Za-z&\#,+()$~%.'"*?<>{}@!^]/g, "");
-                if (e.length > length) {
-                    caseCheck(e, e.length);
-                } else {
-                    updateFields(e);
-                }
-            }}
+            <TextInput
+                maxLength={mode == "date" ? 10 : 16}
+                placeholder={mode == "date" ? 'DD/MM/YYYY' : 'DD/MM/YYYY HH:mm'}
+                value={value != "" && value!=null ? value : text}
+                onChangeText={(e) => {
+                    e = e.replace(/[A-Za-z&\#,+()$~%.'"*?<>{}@!^]/g, "");
+                    if (e.length > length) {
+                        caseCheck(e, e.length);
+                    } else {
+                        updateFields(e);
+                    }
+                }}
 
-            onKeyPress={({ nativeEvent }) => {
-                if (nativeEvent.key === 'Backspace') {
-                }
-            }}
-
-            style={{ borderBottomWidth: 1 }} keyboardType={'decimal-pad'} />
+                onKeyPress={({ nativeEvent }) => {
+                    if (nativeEvent.key === 'Backspace') {
+                    }
+                }}
+                
+                style={style} keyboardType={'decimal-pad'} />
     );
 }
 
-
+DTMergeInput.defaultProps = {
+    mode: "date-time"
+};
